@@ -233,6 +233,8 @@
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+                var fuckUpFactor = 0.90;
+
                 var data = this.responseText.replace(/\s*\n\s*/g, " ").replace(/.*all: JSON\.parse\('({.*?})'\).*/, "$1");
                 var gamesArray = [];
 
@@ -286,6 +288,9 @@
                             var prizeAmount = GetPrizeAmount(prize);
                             var totalPrizes = Number(prize.TotalPrizes.replace(/\$|,/g, ""));
                             var prizesRemaining = Number(prize.PrizesRemaining.replace(/\$|,/g, ""));
+
+                            prizesRemaining *= fuckUpFactor;
+
                             var valueOfPrizesRemaining = prizeAmount * prizesRemaining;
 
                             //results += "<tr>";
@@ -320,7 +325,7 @@
                     }
                     //results += "</td>";
 
-                    var overallOdds = totalTotalPrizes / ticketsPrinted;
+                    var overallOdds = totalTotalPrizes / ticketsPrinted * fuckUpFactor;
                     //results += "<td>" + (overallOdds * 100).toFixed(2) + "%</td>";
 
                     var ticketsRemaining = (totalPrizesRemaining / overallOdds).toFixed(0);
