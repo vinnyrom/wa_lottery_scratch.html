@@ -233,7 +233,7 @@
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                var fuckUpFactor = 0.90;
+                var fuckUpFactor = 0.95;
 
                 var data = this.responseText.replace(/\s*\n\s*/g, " ").replace(/.*all: JSON\.parse\('({.*?})'\).*/, "$1");
                 var gamesArray = [];
@@ -325,10 +325,10 @@
                     }
                     //results += "</td>";
 
-                    var overallOdds = totalTotalPrizes / ticketsPrinted * fuckUpFactor;
+                    var overallOdds = totalTotalPrizes / ticketsPrinted;
                     //results += "<td>" + (overallOdds * 100).toFixed(2) + "%</td>";
 
-                    var ticketsRemaining = (totalPrizesRemaining / overallOdds).toFixed(0);
+                    var ticketsRemaining = ((totalPrizesRemaining - prizesRemaining * (1 - fuckUpFactor))/ overallOdds).toFixed(0);
                     //results += "<td>" + ticketsRemaining + "</td>";
 
                     var costOfTicketsRemaining = game.Cost * ticketsRemaining;
