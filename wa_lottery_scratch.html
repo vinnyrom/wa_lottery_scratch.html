@@ -360,7 +360,7 @@
                     var adjustedExpectedValuePercent = (100 * adjustedExpectedValue).toFixed(2);
                     //results += "<td>" + expectedValueWithoutTopPrizes + "%</td>";
 
-                    var gameObject = { Name: game.GameName, Cost: game.Cost, ExpectedValue: expectedValuePercent, AdjustedExpectedValue: adjustedExpectedValuePercent, ExpectedValueWithoutTopPrizes: expectedValueWithoutTopPrizesPercent, RedeemEndDate: new Date(game.RedeemEndDate), Image: game.UnscratchedImageUrl, TopPrize: topPrize, TopPrizesRemaining: topPrizesRemaining, PercentSold: percentSold, TicketsRemaining: ticketsRemaining, Probability: probabilityOfTopPrizeRemainingPercent };
+                    var gameObject = { Id: game.Id, Name: game.GameName, Cost: game.Cost, ExpectedValue: expectedValuePercent, AdjustedExpectedValue: adjustedExpectedValuePercent, ExpectedValueWithoutTopPrizes: expectedValueWithoutTopPrizesPercent, RedeemEndDate: new Date(game.RedeemEndDate), Image: game.UnscratchedImageUrl, TopPrize: topPrize, TopPrizesRemaining: topPrizesRemaining, PercentSold: percentSold, TicketsRemaining: ticketsRemaining, Probability: probabilityOfTopPrizeRemainingPercent };
                     gamesArray.push(gameObject);
                 }
                 //results += "</tbody></table>";
@@ -396,7 +396,9 @@
                     {
                         results += "<td>";
                         results += "<p align=\"center\">";
+                        results += "<a href=\"https://www.walottery.com/Scratch/Explorer.aspx?id=" + game.Id + "\">";
                         results += "<img src=\"" + game.Image + "\" width=\"75\" /><br>" + game.Name;
+                        results += "</a>";
                         results += "</p>";
                         results += "</td>";
 
