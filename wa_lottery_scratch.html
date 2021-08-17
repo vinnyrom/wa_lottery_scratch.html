@@ -221,7 +221,7 @@
         function GetPrizeAmount(prize) {
             var prizeAmount = prize.PrizeAmount.replace(/\$|,/g, "");
             prizeAmount = prizeAmount.replace("LIFE", "1000000");
-            var regexAnuity = /(.*)\/yr\/(.*)yrs/;
+            var regexAnuity = /(.*)\/yr\/(.*)(years|yrs)/;
             if (prizeAmount.search(regexAnuity) == 0) {
                 var amount = Number(prizeAmount.replace(regexAnuity, "$1"));
                 var duration = Number(prizeAmount.replace(regexAnuity, "$2"));
