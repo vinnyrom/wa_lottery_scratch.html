@@ -384,6 +384,10 @@
 
                 document.getElementById("results").innerHTML = results;
             }
+            else
+            {
+                document.getElementById("results").innerHTML = "<body><p>readyState: " + FormatNumber(this.readyState) + "</p><p>status: " + FormatNumber(this.status) + "</p></body>";
+            }
         };
         xmlhttp.open("GET", "https://www.walottery.com/Scratch/Explorer.aspx", true);
         xmlhttp.send();
